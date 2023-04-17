@@ -98,104 +98,33 @@
 %	 SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Motivations and introduction} % Section title slide, unnumbered
+\section{Introduction} % Section title slide, unnumbered
 
 %------------------------------------------------
 
-\begin{frame}{Game theory}
-Goal: \textit{To analyse and solve conflicting interaction between subjects}\vspace{0.5in}\\
-\pause
-Basic model: game in \textbf{normal form} $(N,\mathcal{S},v)$:
-\pause
+\begin{frame}{Cooperative game}
+    \begin{block}{Cooperative game}
+        A \textbf{cooperative game} is an ordered pair $(N,v)$, where $N$ is a set of players and $v\colon 2^N \to \mathbb{R}$ is the characteristic function. Further, $v(\emptyset) = 0$.
+    \end{block}
     \begin{itemize}
-        \item $N$ ... set of $n$ players
-        \pause
-        \item $\mathcal{S} = S_1 \times S_2 \times \dots \times S_n$ ... strategy profiles
-        \pause
+        \item $\Gamma^n$ ... set of $n$-person cooperative games
+        \item $S \subseteq N$ ... coalition
+        \item $v(S)$ ... values of coalition
+        \item usually $N = \{1,\dots,n\}$
         \begin{itemize}
-            \item $S_i$ ... strategies of player $i$
+            \item $(S,v_S)$ is \textbf{subgame} $(N,v)$:
+            \begin{itemize}
+                \item $v_S \colon 2^S \to \mathbb{R}$
+                \item $v_S(T) \coloneqq v(T)$ pro $T \subseteq S$
+            \end{itemize}
         \end{itemize}
-        \pause
-        \item $v\colon \mathcal{S} \to \mathbb{R}^n$ ... utility function
-        \begin{itemize}
-        \pause
-            \item $v(S)_i$ ... utility of player $i$ under strategy $S$
-        \end{itemize} 
     \end{itemize}
+	
 \end{frame}
 
 %------------------------------------------------
 
-%------------------------------------------------
-
-\begin{frame}{Game theory}
-Goal: \textit{To analyse and solve conflicting interaction between subjects}\vspace{0.5in}\\
-Basic model: game in \textbf{normal form} $(N,\mathcal{S},v)$:
-\begin{itemize}
-	\item $N$ ... set of $n$ players
-	\item $\mathcal{S} = S_1 \times S_2 \times \dots \times S_n$ ... strategy profiles
-	\begin{itemize}
-		\item $S_i$ ... strategies of player $i$
-	\end{itemize}
-	\item $v\colon \mathcal{S} \to \mathbb{R}^n$ ... utility function
-	\begin{itemize}
-		\item $v(S)_i$ ... utility of player $i$ under strategy $S$
-	\end{itemize} 
-\end{itemize}
-Fundamental question: \textit{What strategy should player $i$ choose?}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Solution of games in normal form?\\ Nash equilibrium}
-	Idea: Deviation from the \textcolor{blue}{actual} strategy to a \red{new} strategy does not improve the outcome.\vspace{0.3in}\\
-	\begin{block}{Nash equilibrium}
-		Strategy profile $(s_1,\dots,s_n)$ is \textbf{Nash equilibrium}, if it holds for every player $i$,
-		\[
-			v_i(s_1,\dots,s_{i-1},\textcolor{blue}{s_i},s_{i+1},\dots,s_n) \geq v_i(s_1,\dots,s_{i-1},\textcolor{red}{t_i},s_{i+1},\dots,s_n)
-		\]
-		for every $\textcolor{red}{t_i} \in S_i$.
-	\end{block}
-	\begin{itemize}
-		\item<2-> Is this model suitable for the analysis of \textit{cooperation}?
-	\end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Prisoner dilemma}
-	\begin{tabular}{|l||l|l|}\hline
-		\backslashbox{Prisoner A}{Prisoner B}
-		&\makebox[3em]{Silence}&\makebox[3em]{Speak}\\\hline
-		Silence & -1/-1&-3/0\\\hline
-		Speak & 0/-3&-2/-2\\\hline
-	\end{tabular}
-	\begin{itemize}
-		\item<2-> Nash equilibrium does not lead to cooperation
-		\item<3-> Main problem?
-		\begin{itemize}
-			\item<4-> \textbf{The prisoners cannot agree on a strategy in advance}
-		\end{itemize}
-		\item<5-> Solution?
-		\begin{enumerate}
-			\item<6-> Fix the existing model 
-			\begin{itemize}
-			    \item<7-> $\implies$ Pareto optimum
-				\item<7-> $\implies$ Nash "cooperative" solution
-			\end{itemize}
-			\item<9-> Create a new model
-			\begin{itemize}
-				\item<10-> model of \textit{cooperative games}
-			\end{itemize}
-		\end{enumerate}
-	\end{itemize}
-\end{frame}
-
-%------------------------------------------------
+\begin{comment}
 
 %------------------------------------------------
 
@@ -273,117 +202,16 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 
 %------------------------------------------------
 
-%------------------------------------------------
-
-\begin{frame}{Cooperation - examples of models: \textit{Voting games}}
-    Goal: \textit{Understanding of voting systems a coalition formation}
-    \pause
-    \begin{block}{Voting game}
-        A \textbf{voting game} $(N,\mathcal{W})$ is given by:
-    \begin{itemize}
-        \pause
-        \item $N$ ... set of player
-        \pause	
-         \item $\mathcal{W} \subseteq 2^N$ ... množina vítězných koalic
-        \begin{itemize}
-            \pause
-            \item $\emptyset \notin \mathcal{W}$
-            \item $S \subseteq T \wedge S \in \mathcal{W} \implies T \in \mathcal{W}$
-        \end{itemize}
-    \end{itemize}
-    \end{block}
-    \pause
-    Special case: \textbf{(Weighted) majority games}
-    \begin{itemize}
-        \pause
-        \item $v_i \in \mathbb{R}$ ... power of player $i$
-        \pause
-        \item $v(S) = \sum_{i \in S}v_i$ ... power of coalition $S \subseteq N$
-        \pause
-        \item $S \in \mathcal{W} \iff v(S) \geq k$
-        \begin{itemize}
-            \item $k \in \mathbb{R}$ ... voting quota
-        \end{itemize} 
-    \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Cooperation - examples of models: \textit{Voting games}}
-    Special case: \textbf{(Weighted) majority games}
-    \begin{itemize}
-        \pause
-        \item $v_i \in \mathbb{R}$ ... power of player $i$
-        \pause
-        \item $v(S) = \sum_{i \in S}v_i$ ... power of coalition $S \subseteq N$
-        \pause
-        \item $S \in \mathcal{W} \iff v(S) \geq k$
-        \begin{itemize}
-            \item $k \in \mathbb{R}$ ... voting quota
-        \end{itemize} 
-    \end{itemize}
-    \pause
-    Application: Voting system UN Security Council
-    \pause
-    \begin{itemize}
-        \item 15 members (5 permanent)
-        \pause
-        \begin{itemize}
-            \item permanent members: right of veto
-        \end{itemize}
-        \pause
-        \item to adopt resolution: 9 votes needed
-    \end{itemize}
-    \begin{itemize}
-        \pause
-        \item $N = \{1,\dots,15\}$
-        \pause
-        \item $k=39$
-        \pause
-        \item $v_i = \begin{cases}
-            7 & i=1,\dots,5\\
-            1 & i=6,\dots,15\\
-            \end{cases}$
-    \end{itemize}
-\end{frame}
-
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Cooperation - examples of models:\\ \textit{Cost-sharing problem}}
-    Goal: \textit{Does cooperation lead to reduction of costs?}
-    \begin{itemize}
-        \item<2-> $N$ ... set of players
-        \item<3-> $c(S)$ ... value of costs for a service shared by $S \subseteq N$
-        \begin{itemize}
-            \item<4-> $c(S) + c(T) \geq c(S \cup T)$
-            \item<5-> \small{a common solution simulated by union of individual solutions}
-        \end{itemize}
-    \end{itemize}
-    Examples:
-    \begin{itemize}
-        \item<6-> drinking water supply
-        \item<7-> municipal waste collection
-        \item<8-> subscriptions to scientific journals
-    \end{itemize}
-	
-\end{frame}
-
-
-%------------------------------------------------
+\end{comment}
 
 %------------------------------------------------
 
 \begin{frame}{Cooperation - examples of models:\\ \textit{Minimal spanning-tree games}}
 	Goal: \textit{Find the best connection of players to a source}
 	\begin{itemize}
-		\item<2-> $N = N' \cup \{0\}$ ... set of players + source
-		\item<3-> $c_{ij}$ ... cost of connecting $i,j$
-		\item<4-> solution: a network, where each $i \in N$ is connected to $0$ with minimal sum of costs
+		\item $N = N' \cup \{0\}$ ... set of players + source
+		\item $c_{ij}$ ... cost of connecting $i,j$
+		\item solution: a network, where each $i \in N$ is connected to $0$ with minimal sum of costs
 	\end{itemize}
 	
 \end{frame}
@@ -391,30 +219,8 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 
 %------------------------------------------------
 
-%------------------------------------------------
-
-\begin{frame}{Cooperative game}
-    \begin{block}{Cooperative game}
-        \pause
-        A \textbf{cooperative game} is an ordered pair $(N,v)$, where $N$ is a set of players and $v\colon 2^N \to \mathbb{R}$ is the characteristic function. Further, $v(\emptyset) = 0$.
-    \end{block}
-    \begin{itemize}
-        \item<5-> $\Gamma^n$ ... set of $n$-person cooperative games
-        \item<3-> $S \subseteq N$ ... coalition
-        \item<4-> $v(S)$ ... values of coalition
-        \item<6-> usually $N = \{1,\dots,n\}$
-        \begin{itemize}
-            \item<7-> $(S,v_S)$ is \textbf{subgame} $(N,v)$:
-            \begin{itemize}
-                \item<7-> $v_S \colon 2^S \to \mathbb{R}$
-                \item<7-> $v_S(T) \coloneqq v(T)$ pro $T \subseteq S$
-            \end{itemize}
-        \end{itemize}
-    \end{itemize}
-	
-\end{frame}
-
-%------------------------------------------------
+\begin{comment}
+    
 
 %------------------------------------------------
 
@@ -453,105 +259,7 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 
 %------------------------------------------------
 
-%------------------------------------------------
-
-\begin{frame}{Cooperation - examples of models: \textit{Voting games}}
-    \begin{block}{Voting game}
-        A \textbf{voting game} $(N,\mathcal{W})$ is given by:
-        \begin{itemize}
-            \item $N$ ... set of players
-            \item $\mathcal{W} \subseteq 2^N$ ... set of winning coalitions
-            \begin{itemize}
-                \item $\emptyset \notin \mathcal{W}$
-                \item $S \subseteq T \wedge S \in \mathcal{W} \implies T \in \mathcal{W}$
-            \end{itemize}
-        \end{itemize}
-    \end{block}
-    \pause
-    \begin{block}{Simple game}
-        \textbf{Simple game} $(N,v)$ satisfies:
-        \begin{enumerate}
-            \item $v\colon 2^N \to \{0,1\}$
-            \item $S \subseteq T \wedge v(S)=1 \implies v(T)=1$
-        \end{enumerate}
-    \end{block}
-    \begin{itemize}
-        \pause
-        \item $v(S)=1 \iff S \in \mathcal{W}$
-    \end{itemize}
- 
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Cooperation - examples of models:\\ \textit{Cost-sharing problem}}
-    Goal: \textit{Does cooperation lead to reduction of costs?}
-    \begin{itemize}
-        \item $N$ ... set of players
-        \item $c(S)$ ... value of costs for a service shared by $S \subseteq N$
-        \begin{itemize}
-            \item $c(S) + c(T) \geq c(S \cup T)$
-            \item \small{a common solution simulated by union of individual solutions}
-        \end{itemize}
-    \end{itemize}
-    \pause
-    \textbf{Cooperative game}
-    \begin{itemize}
-        \item<3-> $c\colon 2 ^N \to \mathbb{R}$
-        \item<3-> a so called \textit{cost game} $(N,c)$
-        \begin{itemize}
-            \item<4-> $c(S)$ ... values represent \textit{costs}
-            \item<4-> $v(S)$ ... values represent \textit{profit}
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-%DALSI PRIKLADY SAMI?
-
-
-
-%------------------------------------------------
-
-\begin{frame}{Classes of games}
-	Example: \textit{Bigger coalitions are better coalitions...}
-	\begin{itemize}
-	    \item<2-> \textbf{monotonic game} ($S \subseteq T \subseteq N$) \[v(S) \leq v(T)\]
-	    \item<3-> \textbf{superadditive game} ($S,T \subseteq N, S \cap T = \emptyset$) \[v(S) + v(T) \leq v(S \cup T)\]
-	    \vspace{-0.3cm}
-	    \begin{itemize}
-			\item<4-> $S\cup T$ can behave as separate $S$ and $T$
-			\item<5-> does not hold if there are costs of managing coalitions
-			\item<6-> cost-games: $c(S) + c(T) \geq v(S \cup T)$ ... \textbf{subadditive game}
-		\end{itemize}
-	    \item<7-> \textbf{convex game} ($S,T \subseteq N$) \[v(S) + v(T) \leq \textcolor{red}{v(S \cap T)} +  v(S \cup T)\]
-	\end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Classes of games}
-    Example: \textit{Bigger coalitions are better coalitions...}
-    \begin{itemize}
-        \item \textbf{monotonic game} ($S \subseteq T \subseteq N$) \[v(S) \leq v(T)\]
-        \item \textbf{superadditive game} ($S,T \subseteq N, S \cap T = \emptyset$) \[v(S) + v(T) \leq v(S \cup T)\]
-        \item \textbf{convex game} ($S,T \subseteq N$) \[v(S) + v(T) \leq \textcolor{red}{v(S \cap T)} +  v(S \cup T)\]
-    \begin{itemize}
-        \item<2-> also \textbf{supermodular game}
-        \item<3-> cost-game: $c(S) + c(T) \geq c(S \cap T) + c(S \cup T)$ 
-        \begin{itemize}
-            \item<3-> \textbf{concave (submodular)}
-        \end{itemize}
-    \end{itemize}
-\end{itemize}
-\end{frame}
-
-%------------------------------------------------
+\end{comment}
 
 %------------------------------------------------
 
@@ -559,103 +267,50 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 	\textit{Money first!}
 	\vspace{0.3in}
 	\begin{itemize}
-	    \item<2-> \textbf{Payoff vector} $\bx \in \Rn$
+	    \item \textbf{Payoff vector} $\bx \in \Rn$
 	    \begin{itemize}
-	        \item<2-> $x_i$ represents payoff of player $i$
+	        \item $x_i$ represents payoff of player $i$
 	    \end{itemize}
-	    \item<3-> Vector $\bx \in \Rn$ is \textbf{efficient}, if $\sum_{i \in N}x_i = v(N)$
+	    \item Vector $\bx \in \Rn$ is \textbf{efficient}, if $\sum_{i \in N}x_i = v(N)$
 	    \begin{itemize}
-	        \item<4-> Usually, we distribute $v(N)$
+	        \item Usually, we distribute $v(N)$
             \begin{enumerate}
-                \item<4-> \textit{value of cooperation} $v(N)$
-                \item<4-> \textit{shared costs} $c(N)$
+                \item \textit{value of cooperation} $v(N)$
+                \item \textit{shared costs} $c(N)$
             \end{enumerate}
 	    \end{itemize}
-	    \item<5-> Vector $\bx \in \Rn$ is \textbf{individually rational}, if $x_i \geq v(i)$
+	    \item Vector $\bx \in \Rn$ is \textbf{individually rational}, if $x_i \geq v(i)$
 	    \begin{itemize}
-	        \item<6-> players prefer $x_i$ over $v(i)$
+	        \item players prefer $x_i$ over $v(i)$
 	    \end{itemize}
 	    \end{itemize}
 	    \vspace{0.2in}
 	    \begin{itemize}
-	    \item<7-> $\I^*(v) = \left\{x \in \Rn \mid x(N) = v(N) \right\}$ ... \textbf{preimputation}
+	    \item $\I^*(v) = \left\{x \in \Rn \mid x(N) = v(N) \right\}$ ... \textbf{preimputation}
 	    \begin{itemize}
-	        \item<7-> $x(S)\coloneqq \sum_{i \in S} x_i$
+	        \item $x(S)\coloneqq \sum_{i \in S} x_i$
 	    \end{itemize}
-	    \item<8-> $\I(v) = \left\{x \in \I^*(v) \mid \forall i \in N: x_i \geq v(i)\right\}$ ... \textbf{imputation}
+	    \item $\I(v) = \left\{x \in \I^*(v) \mid \forall i \in N: x_i \geq v(i)\right\}$ ... \textbf{imputation}
 	\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
+\section{Solution concepts}
 
 %------------------------------------------------
 
 \begin{frame}{Solution concepts}
 	\begin{itemize}
-	    \item<2-> Set of payoff vectors satisfying further properties are \textbf{solution concepts}
-	    \item<3-> Can reflect payoff distribution, which is
+	    \item Set of payoff vectors satisfying further properties are \textbf{solution concepts}
+	    \item Can reflect payoff distribution, which is
 	    \begin{itemize}
-	        \item<4-> \textit{...fair...}
-	        \item<4-> \textit{...non-discriminatory...}
-	        \item<4-> \textit{...stable (players will accept it)...} 
-	        \item<4-> \textit{...}
+	        \item \textit{...fair...}
+	        \item \textit{...non-discriminatory...}
+	        \item \textit{...stable (players will accept it)...} 
+	        \item \textit{...}
 	    \end{itemize}
 	\end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Examples of solution concepts: The core}
-    Idea: \textit{Payoff distribution leads to cooperation...}
-    \begin{block}{The core}
-    For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
-    \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.\]
-    \end{block}
-    \begin{itemize}
-        \item<2-> assumption: \textit{homo economicus} 
-        \begin{itemize}
-            \item<3-> model of human as a player
-            \item<3-> strictly rational and selfish
-            \item<3-> follows his subjective goals
-        \end{itemize}
-        \item<4-> $v(N)$ ... value, which is distributed among players
-            \item<5-> $x(S) > v(S) \implies$ coalition $S$ does not leave $N$ 
-            \begin{itemize}
-                \item<6-> would lead to $(S,v_S)$
-                \item<6-> $v(S)$ ... distributed value
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Examples of solution concepts: The Shapley value}
-    Idea: \textit{Divide the profit in a fair way...}
-    \begin{block}{The Shapley value}
-        For a cooperative game $(N,v)$, the \textbf{Shapley value} $\phi(v)$ of player $i$ is
-        \[
-        \phi_i(v) = \sum_{S \subseteq N \setminus i}\frac{s!(n-s-1)!}{n!}\left(v(S \cup i) - v(S)\right)
-        \]
-    \end{block}
-    \begin{itemize}
-        \item<2-> $v(S\cup i)-v(S)$
-        \begin{itemize}
-            \item<3-> \textit{marginal contribution} (of player $i$ in $S \cup i$)
-        \end{itemize}
-        \item<2-> $\frac{s!(n-s-1)!}{n!}$ 
-        \begin{itemize}
-            \item<4-> weights reflecting different sizes of coalitions
-        \end{itemize}
-        \item<2-> $\sum_{S \subseteq N \setminus i}$
-        \begin{itemize}
-            \item<5-> sum of all marginal contributions of $i$
-        \end{itemize}
-    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -665,13 +320,13 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 \begin{frame}{Solution concepts}
     Formally:
 	\begin{enumerate}
-	    \item<2-> sets of payoff vectors 
+	    \item sets of payoff vectors 
 	    \begin{itemize}
-	        \item<3-> $\Sigma(v) = \left\{x \in \Rn \mid \dots\right\}$
+	        \item $\Sigma(v) = \left\{x \in \Rn \mid \dots\right\}$
 	    \end{itemize}
-	    \item<2-> functions on games
+	    \item functions on games
 	    \begin{itemize}
-	        \item<4-> $\Sigma \colon \Gamma^n \to 2^{\Rn}$
+	        \item $\Sigma \colon \Gamma^n \to 2^{\Rn}$
 	    \end{itemize}
 	\end{enumerate}
 \end{frame}
@@ -694,15 +349,15 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 	\end{enumerate}
 	We distringush
 	\begin{enumerate}
-	    \item<2-> \textbf{single-point} solution concepts
+	    \item \textbf{single-point} solution concepts
 	    \begin{itemize}
-	        \item<3-> as a set: $\Sigma(v) = \{x\}$ 
+	        \item as a set: $\Sigma(v) = \{x\}$ 
 	        \begin{itemize}
-	            \item<3-> we prefer: $\Sigma(v) = x$
+	            \item we prefer: $\Sigma(v) = x$
 	        \end{itemize}
-	        \item<4-> as a function: $\Sigma \colon \Gamma^n \to \mathbb{R}$
+	        \item as a function: $\Sigma \colon \Gamma^n \to \mathbb{R}$
 	    \end{itemize}
-	    \item<2-> \textbf{multi-point} solution concepts
+	    \item \textbf{multi-point} solution concepts
 	\end{enumerate}
 \end{frame}
 
@@ -710,7 +365,156 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 
 %------------------------------------------------
 
-\begin{frame}{Alternative way to define the Shapley value}
+\begin{frame}{Multi-point solution concept: The core}
+    Idea: \textit{Payoff distribution leads to cooperation...}
+    \begin{block}{The core}
+    For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
+    \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.\]
+    \end{block}
+    \begin{itemize}
+        \item assumption: \textit{homo economicus} 
+        \begin{itemize}
+            \item model of human as a player
+            \item strictly rational and selfish
+            \item follows his subjective goals
+        \end{itemize}
+        \item $v(N)$ ... value, which is distributed among players
+            \item $x(S) > v(S) \implies$ coalition $S$ does not leave $N$ 
+            \begin{itemize}
+                \item would lead to $(S,v_S)$
+                \item $v(S)$ ... distributed value
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Multi-point solution concept: The core}
+    \begin{block}{The core}
+    For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
+    \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid \textcolor{blue}{x(S)} \geq \textcolor{red}{v(S)}, \forall S \subseteq N \right\}.\]
+    \end{block}
+    Reminder
+    \begin{block}{Nash equilibrium}
+		Strategy profile $(s_1,\dots,s_n)$ is \textbf{Nash equilibrium}, if it holds for every player $i$,
+		\[
+			v_i(s_1,\dots,s_{i-1},\textcolor{blue}{s_i},s_{i+1},\dots,s_n) \geq v_i(s_1,\dots,s_{i-1},\textcolor{red}{t_i},s_{i+1},\dots,s_n)
+		\]
+		for every $\textcolor{red}{t_i} \in S_i$.
+	\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Multi-point solution concept: The core}
+    \begin{block}{The core}
+    For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
+    \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.\]
+    \end{block}
+    \begin{block}{Emptyness of the core}
+        There are cooperative games $\left(N,v\right)$ with empty core.
+    \end{block}
+    \begin{itemize}
+        \item Non-esential games
+        \begin{itemize}
+            \item $v\left(N\right) < \sum_{i \in N}v\left(i\right)$
+        \end{itemize}
+        \item Let $x \in \mathcal{C}\left(v\right)$
+        \begin{itemize}
+            \item $x\left(N\right)=v\left(N\right)<\sum_{i\in N}\leq x\left(N\right)$ 
+        \end{itemize}
+        \item $x$ does not exist $\implies$ $\left(v\right)=\emptyset$
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Multi-point solution concept: The core}
+    Question: When is the core non-empty \\
+	We can encode the core as linear program (P) and determine the dual program (D)
+    \begin{itemize}
+		\item $\left(P\right)=\begin{cases}
+			min_{x \in \R^n} & x \left(N\right) \\
+			\text{subject to} &x\left(S\right) \geq v\left(S\right)\text{ for }S \subseteq N
+		\end{cases}$
+		\item $\left(D\right)=\begin{cases}
+			max_{y \in \R_{+}^{\left(2^n-1\right)}} & \sum_{S \subseteq N y_S v\left(S\right)} \\
+			\text{subject to} & \sum_{\emptyset \neq S \subseteq N} y_S \chi_S = \chi_N
+		\end{cases}$
+	\end{itemize}
+	We derive the weak Bondereva-Shapley theorem
+	\begin{block}{Weak Bondareva-Shapley theorem}
+		Cooperative game $\left(N,v\right)$ has non-empty core if and only if 
+		\[
+			v\left(N\right) \geq \sum_{S \subseteq N} y_S v\left(S\right)\text{ for all feasible }y \in \R^{\left(2^n-1\right)}
+		\]
+	\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Single-point solution concept: The Shapley value}
+    Idea: \textit{Divide the profit in a fair way...}
+    \begin{block}{The Shapley value}
+        For a cooperative game $(N,v)$, the \textbf{Shapley value} $\phi(v)$ of player $i$ is
+        \[
+        \phi_i(v) = \sum_{S \subseteq N \setminus i}\frac{s!(n-s-1)!}{n!}\left(v(S \cup i) - v(S)\right)
+        \]
+    \end{block}
+    \begin{itemize}
+        \item $v(S\cup i)-v(S)$
+        \begin{itemize}
+            \item \textit{marginal contribution} (of player $i$ in $S \cup i$)
+        \end{itemize}
+        \item $\frac{s!(n-s-1)!}{n!}$ 
+        \begin{itemize}
+            \item weights reflecting different sizes of coalitions
+        \end{itemize}
+        \item $\sum_{S \subseteq N \setminus i}$
+        \begin{itemize}
+            \item sum of all marginal contributions of $i$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Single-point solution concept: The Shapley value}
+    Idea: \textit{Divide the profit in a fair way...}
+    \begin{block}{The Shapley value}
+        For a cooperative game $(N,v)$, the \textbf{Shapley value} $\phi(v)$ of player $i$ is
+        \[
+        \phi_i(v) = \sum_{S \subseteq N \setminus i}\frac{s!(n-s-1)!}{n!}\left(v(S \cup i) - v(S)\right)
+        \]
+    \end{block}
+    \begin{itemize}
+        \item The players agree om the following procedure:
+        \begin{enumerate}
+			\item Form the grandcoalition N.
+			\item Enter the the coalition individuallyand randomly.
+			\item When player $i$ enters coalition $S$, he receives $v\left(S \cup i\right)-v\left(S\right)$.
+		\end{enumerate}
+		\item $s!\left(n-s-1\right)!$ ... number of situations, in which $i$ enters $S$
+		\item $n!$ ... number of all possible ways to construct $N$
+		\item $\phi_i(v)$ ... the average value of player $i$'s payment
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Shapley value}
     \textit{It is possible to define it using its properties...}
     \begin{block}{The Shapley value}
        The \textbf{Shapley value} $\phi(v)$ is the only function $f \colon \Gamma^n \to \mathbb{R}$ satisfying for all games $(N,v),(N,w)$:
@@ -738,25 +542,68 @@ Fundamental question: \textit{What strategy should player $i$ choose?}
 
 %------------------------------------------------
 
+
+\section{Classes of games}
+
 %------------------------------------------------
 
-\begin{frame}{Summary}
-    \begin{alertblock}{Cooperative games}
-        A \textbf{cooperative game} is given by a set of players and real values representing the profit of each subset of players (\textit{coalition}). These values are encoded by the \textit{characteristic function} of a game. The goal of the cooperative game theory is to find payoffs (in form of \textbf{payoff vectors}) for individual players based on values of the game. Payoff vectors satisfying further properties form \textbf{solution concepts}. These can be expressed as:
-        \begin{enumerate}
-            \item sets of payoff vectors
-            \item functions on games
-            \begin{enumerate}
-                \item defined by formula
-                \item defined by its properties
-            \end{enumerate}
-        \end{enumerate}
-    \end{alertblock}
+\begin{frame}{Classes of games}
+    \begin{itemize}
+		\item \textbf{monotonic game} \[\left(S \subseteq T \subseteq N\right)\left(v(S) \leq v(T)\right)\]
+		\item \textbf{superadditive game} \[\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)\]
+		\item \textbf{convex game} \[\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)\]
+		\item \textbf{essential game} \[v(N) \geq \sum_{i \in N} v(i)\]
+		\item \textbf{balanced game} \[\mathcal{C}(v) \neq \emptyset\]
+	\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
-	
+%------------------------------------------------
 
+\begin{frame}{Classes of games}
+    Question: \textit{What are the relations between them}
+	\begin{block}{Balanced and essential}
+		Balanced cooperative games are essential.
+	\end{block}
+	\begin{itemize}
+		\item $(N,v)$ is essential
+		\begin{itemize}
+			\item $\mathcal{I}(v)=\left\{x \in \R^n \mid x(N)=v(N)\land \forall i \in N: x_i \geq v(i)\right\} \neq \emptyset$
+		\end{itemize}
+		\item $(N,v)$ is balanced
+		\begin{itemize}
+			\item $\emptyset \neq \mathcal{C}(v) \subseteq \mathcal{I}(v)$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Classes of games}
+    Question: \textit{What are the relations between them}
+	\begin{block}{Convex and superadditive}
+		Convex cooperative games are superadditive.
+	\end{block}
+	\begin{itemize}
+		\item $(N,v)$ is convex
+		\begin{itemize}
+			\item $\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)$
+		\end{itemize}
+		\item $(N,v)$ is superadditive
+		\begin{itemize}
+			\item $\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)$
+		\end{itemize}
+		\item $S \cap T = \emptyset$
+		\begin{itemize}
+			\item $\left(s \cap T\right) = 0$
+			\item $v(S)+v(T) \leq v\left(S \cup T\right)$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
 
 \end{document}
