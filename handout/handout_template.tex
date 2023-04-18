@@ -1,0 +1,316 @@
+%TEMPLATE
+%for Spring School 2023
+%Don't change any macros given.
+%The first place for your change is below line 250.
+%See you at Spring School
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DO NOT CHANGE THIS
+%
+\documentclass[12pt]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%PACKAGES
+%basic
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage[unicode]{hyperref}%%sazba url
+%apperance
+%\usepackage{fullpage}
+\usepackage[margin=0.75in]{geometry}
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage{multicol}  %% for multiple columns in text
+%schedule
+\usepackage[usenames,dvipsnames]{color}
+%math and usefull packages
+\usepackage{amsfonts}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[linesnumbered, vlined]{algorithm2e}%algorithms
+% tikz
+\usepackage{tikz}
+
+
+%%%% by participants:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TITLE
+\makeatletter
+
+\def\pen{\penalty10000}
+
+
+\newdimen\HeaderBoxMargin
+\HeaderBoxMargin=3pt
+
+\def\HeaderBox#1{
+  \hbox{%
+    \vrule width 0.4pt \hglue -0.4pt%
+    \vbox{%
+      \hrule height 0.4pt\pen\vskip0.5mm\hrule height 0.4pt\pen\smallskip%
+      \begin{center}%
+        % velmi velmi ošklivý hack, aby se text nedotýkal stran
+        \leftskip=\the\HeaderBoxMargin plus 1fil%
+        \rightskip=\the\HeaderBoxMargin plus 1fil%
+        #1%
+      \end{center}%
+      \medskip\hrule height 0.4pt%
+    }%
+    \hglue -0.4pt \vrule width 0.4pt%
+  }%
+  \pen\smallskip%
+}
+
+
+\def\chapter*#1{\Heading{#1}}%
+
+
+\long\def\literaturestart#1\literatureend{{
+  \def\chapter*##1{\section{##1}\vspace*{-\parskip}}
+  \begin{thebibliography}{9}
+  \footnotesize\normalfont
+    #1
+  \end{thebibliography}
+}}
+
+
+% sázení section v obsahu vlevo a ne odsazeně
+\def\l@section{\@dottedtocline{1}{0em}{2.3em}}
+
+% okouše mezery z konce argumentu (protože unskip nefunguje v pdf obsahu)
+\def\Trim@Impl#1#2 \end#3\Trim@End{\ifx\end#3\end#1\else\Trim{#2}\fi}
+\def\Trim#1{\Trim@Impl{#1}#1\end{} \end\Trim@End}
+
+
+\newcommand{\Heading}[1]{
+\begin{center}
+\bf \LARGE #1
+\end{center}
+\bigskip
+\bigskip
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TITLE type
+
+% jen obalí argumenty \Trim{} a pokud je #1 prázdné
+% tak ho nastaví na \Trim{#2}\Trim{#3}
+\long\def\Id#1\FirstName#2\Surname#3\Email#4\Serie#5\Title#6%
+         \PaperAuthor#7\Link#8\Text#9\End{{%
+  \IdImpl\ifx\XXX#1\XXX\Trim{#2}\Trim{#3}\else\Trim{#1}\fi
+    \FirstName\Trim{#2}\Surname\Trim{#3}\Email\Trim{#4}%
+    \Serie\Trim{#5}\Title\Trim{#6}%
+    \PaperAuthor\Trim{#7}\Link\Trim{#8}\Text #9\End%
+  }}
+
+\def\Id@title#1{\medskip\\{\Large #1}}
+
+\long\def\IdImpl#1\FirstName#2\Surname#3\Email#4\Serie#5\Title#6%
+         \PaperAuthor#7\Link#8\Text#9\End{{%
+  \def\nop{\Trim{}}%
+  \def\testemail{#4}%
+  \def\testserie{#5}%
+  \def\testpaper{#7}%
+  \def\testlink{#8}%
+  %
+  \phantomsection%
+  \HeaderBox{%
+    {\Large #2 #3}\pen%
+    \ifx\testemail\nop\else%
+      \smallskip\\{\tt #4}\pen%
+    \fi%
+    \ifx\testpaper\nop\else%
+      \smallskip\\{Presented paper by #7}\pen%
+    \fi%
+    \ifx\testserie\nop%
+      \Id@title{#6}%
+      \addcontentsline{toc}{section}{#6 (\nobreak{#2} \nobreak{#3})}%
+    \else%
+      \Id@title{#6\penalty-2{} {\it as part of series} #5}%
+      \addcontentsline{toc}{section}{#5: #6 (\nobreak{#2} \nobreak{#3})}%
+    \fi%
+    \ifx\testlink\nop\else%
+      \smallskip\\{(\texttt{#8})}\pen%
+    \fi%
+    \label{#1}%
+  }%
+  \setcounter{theorem}{0}%
+  {#9}%
+}}
+
+%name surname email {Title}
+\newcommand{\Talk}[4]{%
+  \Id\FirstName #1 \Surname #2 \Email #3
+  \Serie
+  \Title #4
+  \PaperAuthor
+  \Link
+  \Text\End
+}
+%name surname email {author of the paper}{Title}{link}
+\newcommand{\PaperTalk}[6]{%
+  \Id\FirstName #1 \Surname #2 \Email #3
+  \Serie
+  \Title #5
+  \PaperAuthor #4
+  \Link #6
+  \Text\End
+}
+%name surname email {author of the paper}{Title}{Serie}{link}
+\newcommand{\SeriesTalk}[7]{%
+  \Id\FirstName #1 \Surname #2 \Email #3
+  \Serie #6
+  \Title #5
+  \PaperAuthor #4
+  \Link #7
+  \Text\End
+}
+%name surname email {Title}{Serie}
+\newcommand{\SeriesOther}[5]{%
+  \Id\FirstName #1 \Surname #2 \Email #3
+  \Serie #5
+  \Title #4
+  \PaperAuthor
+  \Link
+  \Text\End
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Schedule macros
+%Schaduled Talk: Talk Speaker_Name Speaker_Surname Time Duration 
+\def\ST#1#2#3#4#5{\Event{#5}{#1}{#2 #3 \hskip 0pt plus 0.5fil \mbox{#4} \hskip 0pt plus 0.5fil \pageref{#2#3}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math enviroment definition.
+\newcounter{theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newenvironment{proof}{\par\textbf{Proof}}{ \rule{1pt}{0pt}   \hfill $\square$ \\}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{note}[theorem]{Note}
+
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{exercise}[theorem]{Exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dela sekce v jednotlivych kouskach sbornicku
+\def\subsection#1{\par Not good idea. \smallskip}
+\def\section#1{\vskip 9pt plus 2pt minus 1pt\centerline{\bf #1}\par\ignorespaces}
+\def\paragraph#1{\par{\bf #1}\hskip 0.5em\ignorespaces}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pro formatovani odstavcu
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt} % smallskip  size (was 0.5em)
+\setlength{\parsep}{\parskip}
+\def\sirka{0.89\textwidth}
+
+\let\trivlist@old\trivlist
+%\def\trivlist{\parskip=0pt\partopsep=0pt\trivlist@old}
+
+\let\normalsize@old\normalsize
+\def\normalsize{%
+  \normalsize@old%
+  \setlength{\abovedisplayskip}{5pt plus 3pt minus 2pt}% def 10 +2 -5 pt
+  \setlength{\belowdisplayskip}{5pt plus 3pt minus 2pt}% def 10 +2 -5 pt
+  \setlength{\abovedisplayshortskip}{0pt plus 3pt}% def 0 +3 pt
+  \setlength{\belowdisplayshortskip}{0pt plus 3pt}% def 6 +3 -3 pt
+}
+
+\setlength{\itemsep}{0pt} % def 4.0pt plus 2.0pt minus 1.0pt
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+
+%% Makro pro vkladani prispevku
+\newcommand{\prispevek}[1]{
+	\input{prispevky/#1}\vskip 3em
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Math macros
+\newcommand{\T}[1]{#1^\top\!} 
+\newcommand{\calO}{{\mathcal O}}
+
+\newcommand{\NP}{\ensuremath{\mathrm{NP}}}
+\newcommand{\FPT}{\ensuremath{\mathrm{FPT}}}
+\newcommand{\Pp}{\ensuremath{\mathrm{P}}}
+
+\def\epsilon{\varepsilon}
+\def\phi{\varphi}
+
+\pdfstringdefDisableCommands{%
+  \def\chi{\textchi}%
+  \def\Delta{\textDelta}%
+  \def\omega{\textomega}%
+}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%END OF DO NOT CHANGE THIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Your macros
+%Please use as few as possible.
+%\newcommand{\mbb}[1]{\ensuremath{\mathbb{#1}}}
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Your packages
+%Please use as few as possible.
+% \usepackage{yourfavouritepackage}
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DOCUMENT
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Please fill the informations
+% Choose only one of the following macros and comment out the rest.
+% If you will present someones paper
+\PaperTalk{Your Name}{Surname}{your@email.cz}{Author of the article}{The Title}{http://link.springer.com/article/10.1007\%2FBF02579200}
+%If you present a paper as a part of series.
+\SeriesTalk{Your Name}{Surname}{your@email.cz}{Author of the article}{The Title}{The Best Series}{http://link.springer.com/article/10.1007\%2FBF02579200}
+%Other talk as a part of series.
+\SeriesOther{Your Name}{Surname}{your@email.cz}{The Title}{The Best Series}
+%Some other talk
+\Talk{Your Name}{Surname}{your@email.cz}{The Title}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The beginning of your write up.
+\section{Introduction}
+Write your text here.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In case you would like to have some refences.
+%It is ussualy not neccessary.
+%Please, uncomment/comment start and end of the bibliography
+\literaturestart
+	
+%please add a literature in given format as in examples:
+\bibitem{latexcompanion} 
+Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+\textit{The \LaTeX\ Companion}. 
+Addison-Wesley, Reading, Massachusetts, 1993.
+ 
+ 
+\bibitem{knuthwebsite} 
+Knuth: Computers and Typesetting,
+\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
+
+\literatureend
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%end of the document
+%PLEASE DO NOT CHANGE
+\end{document}
