@@ -109,7 +109,7 @@
     \begin{itemize}
         \item $\Gamma^n$ ... set of $n$-person cooperative games
         \item $S \subseteq N$ ... coalition
-        \item $v(S)$ ... values of coalition
+        \item $v(S)$ ... value of coalition
         \item usually $N = \{1,\dots,n\}$
         \begin{itemize}
             \item $(S,v_S)$ is \textbf{subgame} $(N,v)$:
@@ -427,7 +427,7 @@
         \begin{itemize}
             \item $x\left(N\right)=v\left(N\right)<\sum_{i\in N}\leq x\left(N\right)$ 
         \end{itemize}
-        \item $x$ does not exist $\implies$ $\left(v\right)=\emptyset$
+        \item $x$ does not exist $\implies$ $C\left(v\right)=\emptyset$
     \end{itemize}
 \end{frame}
 
@@ -436,7 +436,7 @@
 %------------------------------------------------
 
 \begin{frame}{Multi-point solution concept: The core}
-    Question: When is the core non-empty \\
+    Question: \textit{When is the core non-empty?} \\
 	We can encode the core as linear program (P) and determine the dual program (D)
     \begin{itemize}
 		\item $\left(P\right)=\begin{cases}
@@ -607,7 +607,7 @@
 %------------------------------------------------
 
 \begin{frame}{Classes of games}
-    Question: \textit{What are the relations between them}
+    Question: \textit{What are the relations between them?}
 	\begin{block}{Balanced and essential}
 		Balanced cooperative games are essential.
 	\end{block}
@@ -643,7 +643,7 @@
 		\end{itemize}
 		\item $S \cap T = \emptyset$
 		\begin{itemize}
-			\item $\left(s \cap T\right) = 0$
+			\item $\left(S \cap T\right) = 0$
 			\item $v(S)+v(T) \leq v\left(S \cup T\right)$
 		\end{itemize}
 	\end{itemize}
@@ -666,7 +666,7 @@
 		$\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)$
 	\end{block}
 	\begin{block}{Core of convex games}
-		For a convex cooperative game $(N,v)$, it holds $\mathcal{C}(v)=\mathcal{W}(c)$
+		For a convex cooperative game $(N,v)$, it holds $\mathcal{C}(v)=\mathcal{W}(v)$
 	\end{block}
 	Proof: We show only $m^{id}_v \in \mathcal{C}(v)$
 	\begin{enumerate}
@@ -729,10 +729,6 @@
 			\item expensive to get all information
 			\item expensive to store all information
 		\end{itemize}
-		\item \textbf{not suitable for all scenerios}
-		\begin{itemize}
-			\item unsuitable for more complex scenarios
-		\end{itemize}
 	\end{enumerate}
 \end{frame}
 
@@ -751,16 +747,14 @@
 		\end{itemize}
 		\item \textbf{not every coalition makes sense}
 		\begin{itemize}
-			\item restricted games
+			\item games on graphs (Martin Černý)
 		\end{itemize}
 		\item $2^n$ \textbf{real values representing} $v$
 		\begin{itemize}
-			\item uncertainty models
-			\item models with compact characteristic function
-		\end{itemize}
-		\item \textbf{not suitable for all scenerios}
-		\begin{itemize}
-			\item bi-cooperative games and games with overlapping coalitions
+			\item incomplete games (David Sychrovský + Filip Úradník)
+			\item interval games (Martin Kunst)
+			\item stochastic games (David Ryzák)
+			\item models with compact characteristic function (Martin Černý)
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
