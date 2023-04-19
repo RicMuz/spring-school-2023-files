@@ -277,20 +277,104 @@
 %Please fill the informations
 % Choose only one of the following macros and comment out the rest.
 % If you will present someones paper
-\PaperTalk{Your Name}{Surname}{your@email.cz}{Author of the article}{The Title}{http://link.springer.com/article/10.1007\%2FBF02579200}
+%\PaperTalk{Your Name}{Surname}{your@email.cz}{Author of the article}{The Title}{http://link.springer.com/article/10.1007\%2FBF02579200}
 %If you present a paper as a part of series.
-\SeriesTalk{Your Name}{Surname}{your@email.cz}{Author of the article}{The Title}{The Best Series}{http://link.springer.com/article/10.1007\%2FBF02579200}
+%\SeriesTalk{Your Name}{Surname}{your@email.cz}{Author of the article}{The Title}{The Best Series}{http://link.springer.com/article/10.1007\%2FBF02579200}
 %Other talk as a part of series.
-\SeriesOther{Your Name}{Surname}{your@email.cz}{The Title}{The Best Series}
+\SeriesOther{Richard}{Mužík}{richard@imuzik.cz}{Introduction to Cooperative Game Theory}{Cooperative game theory}
 %Some other talk
-\Talk{Your Name}{Surname}{your@email.cz}{The Title}
+%\Talk{Richard}{Mužík}{richard@imuzik.cz}{The Introduction to Cooperative Game Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %The beginning of your write up.
 \section{Introduction}
-Write your text here.
+In this lecute you will find brief introduction to cooperative games.
 
+\begin{definition}[Cooperative game]
+  A cooperative game is an ordered pair $(N,v)$, where $N$ is a set of players and $v\colon 2^N \to \mathbb{R}$ is the characteristic function. Further, $v(\emptyset) = 0$.
+\end{definition}
 
+\begin{definition}[Payoff vector]
+  Payoff vector is $x \in \mathbb{R}^n$, where $x_i$ represents payoff of player $i$. It is efficient, if $\sum_{i \in N} x_i = v(n)$. It is individually rational, if $x_i \geq v(i)$.
+\end{definition}
 
+\begin{definition}[Core]
+  For a cooperative game $(N,v)$, the core $\mathcal{C}(v)$ is
+  \[
+    \mathcal{C}(v) = \left\{x \in \mathcal{I}^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.
+  \]
+\end{definition}
+
+\begin{observation}[Emptyness of the core]
+  There are cooperative games $(N,v)$ with empty core.
+\end{observation}
+
+\begin{theorem}[Weak Bondareva-Shapley]
+  Cooperative game $\left(N,v\right)$ has non-empty core if and only if 
+	\[
+		v\left(N\right) \geq \sum_{S \subseteq N} y_S v\left(S\right)\text{ for all feasible }y \in \mathbb{R}^{\left(2^n-1\right)}
+	\]
+\end{theorem}
+
+\begin{definition}
+  For a cooperative game $(N,v)$, the Shapley value $\phi(v)$ of player $i$ is
+  \[
+    \phi_i(v) = \sum_{S \subseteq N \setminus i}\frac{s!(n-s-1)!}{n!}\left(v(S \cup i) - v(S)\right)
+  \]
+\end{definition}
+
+\begin{definition}[Marginal vector]
+  For cooperative game $(N,v)$ and permutation $\sigma \in \Sigma_n$ is $m_v^\sigma$ marginal vector, where $\left(m_v^\sigma\right)_i = v\left(S_{\sigma(i)}\cup i\right)-v\left(S_{\sigma(i)}\right)$ and $S_{\sigma(i)}= \left\{j \in N \mid \sigma(j) < \sigma(i)\right\}$
+\end{definition}
+
+\begin{definition}[Weber set]
+  For cooperative game $(N,v)$ the Weber set is
+  \[
+    \mathcal{W}(v)=conv\left\{m^{\sigma}_{v}\mid \sigma \in \Sigma_n\right\}
+  \]
+\end{definition}
+
+\begin{lemma}[Shapley value and Weber set]
+  For a cooperative game $(N,v)$ it holds:
+	\[
+    \phi(v) \in \mathcal{W}(v)
+  \]
+	Moreover, $\phi(v)$ is the center of gravity of $\mathcal{W}(v)$.
+\end{lemma}
+
+\begin{theorem}[Weber set and core]
+  For every cooperative game $(N,v)$, it holds $\mathcal{C}(v) \subseteq \mathcal{W}(v)$
+\end{theorem}
+
+\begin{definition}[Classes]
+  The cooperative game $(N,v)$ is said to be
+  \begin{itemize}
+    \item monotonic game $\iff$ $\left(S \subseteq T \subseteq N\right)\left(v(S) \leq v(T)\right)$
+		\item superadditive game $\iff$ $\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)$
+		\item convex game $\iff$ $\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)$
+		\item essential game $\iff$ $v(N) \geq \sum_{i \in N} v(i)$
+		\item balanced game $\iff$ $\mathcal{C}(v) \neq \emptyset$
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Balanced and essential]
+  Balanced cooperative games are essential.
+\end{theorem}
+
+\begin{theorem}[Convex and superadditive]
+  Convex cooperative games are superadditive.
+\end{theorem}
+
+\begin{theorem}[Core of convex games]
+  For a convex cooperative game $(N,v)$, it holds $\mathcal{C}(v)=\mathcal{W}(v)$
+\end{theorem}
+
+\begin{corollary}[Shapley value and convex games]
+  For a convex cooperative game $(N,v)$, it holds:
+	\begin{enumerate}
+		\item $\phi(v) \in \mathcal{C}(v)$
+		\item $\phi(v)$ is the centre of gravity of $\mathcal{C}(v)$
+	\end{enumerate}
+\end{corollary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %In case you would like to have some refences.
@@ -300,14 +384,10 @@ Write your text here.
 	
 %please add a literature in given format as in examples:
 \bibitem{latexcompanion} 
-Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
-\textit{The \LaTeX\ Companion}. 
-Addison-Wesley, Reading, Massachusetts, 1993.
+Hans Peters 
+\textit{Game theory: A multi-leveled approach}. 
+Springer Texts in Business and Economics, 2nd edition, 2015.
  
- 
-\bibitem{knuthwebsite} 
-Knuth: Computers and Typesetting,
-\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
 
 \literatureend
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
