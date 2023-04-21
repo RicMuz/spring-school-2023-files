@@ -104,18 +104,19 @@
 
 \begin{frame}{Cooperative game}
     \begin{block}{Cooperative game}
+		\pause
         A \textbf{cooperative game} is an ordered pair $(N,v)$, where $N$ is a set of players and $v\colon 2^N \to \mathbb{R}$ is the characteristic function. Further, $v(\emptyset) = 0$.
     \end{block}
     \begin{itemize}
-        \item $\Gamma^n$ ... set of $n$-person cooperative games
-        \item $S \subseteq N$ ... coalition
-        \item $v(S)$ ... value of coalition
-        \item usually $N = \{1,\dots,n\}$
+        \item<5-> $\Gamma^n$ ... set of $n$-person cooperative games
+        \item<3-> $S \subseteq N$ ... coalition
+        \item<4-> $v(S)$ ... value of coalition
+        \item<6-> usually $N = \{1,\dots,n\}$
         \begin{itemize}
-            \item $(S,v_S)$ is \textbf{subgame} $(N,v)$:
+            \item<7-> $(S,v_S)$ is \textbf{subgame} $(N,v)$:
             \begin{itemize}
-                \item $v_S \colon 2^S \to \mathbb{R}$
-                \item $v_S(T) \coloneqq v(T)$ pro $T \subseteq S$
+                \item<7-> $v_S \colon 2^S \to \mathbb{R}$
+                \item<7-> $v_S(T) \coloneqq v(T)$ pro $T \subseteq S$
             \end{itemize}
         \end{itemize}
     \end{itemize}
@@ -209,9 +210,9 @@
 \begin{frame}{Cooperation - examples of models:\\ \textit{Minimal spanning-tree games}}
 	Goal: \textit{Find the best connection of players to a source}
 	\begin{itemize}
-		\item $N = N' \cup \{0\}$ ... set of players + source
-		\item $c_{ij}$ ... cost of connecting $i,j$
-		\item solution: a network, where each $i \in N$ is connected to $0$ with minimal sum of costs
+		\item<2-> $N = N' \cup \{0\}$ ... set of players + source
+		\item<3-> $c_{ij}$ ... cost of connecting $i,j$
+		\item<4-> solution: a network, where each $i \in N$ is connected to $0$ with minimal sum of costs
 	\end{itemize}
 	
 \end{frame}
@@ -267,30 +268,30 @@
 	\textit{Money first!}
 	\vspace{0.3in}
 	\begin{itemize}
-	    \item \textbf{Payoff vector} $\bx \in \Rn$
+	    \item<2-> \textbf{Payoff vector} $\bx \in \Rn$
 	    \begin{itemize}
-	        \item $x_i$ represents payoff of player $i$
+	        \item<2-> $x_i$ represents payoff of player $i$
 	    \end{itemize}
-	    \item Vector $\bx \in \Rn$ is \textbf{efficient}, if $\sum_{i \in N}x_i = v(N)$
+	    \item<3-> Vector $\bx \in \Rn$ is \textbf{efficient}, if $\sum_{i \in N}x_i = v(N)$
 	    \begin{itemize}
-	        \item Usually, we distribute $v(N)$
+	        \item<4-> Usually, we distribute $v(N)$
             \begin{enumerate}
-                \item \textit{value of cooperation} $v(N)$
-                \item \textit{shared costs} $c(N)$
+                \item<4-> \textit{value of cooperation} $v(N)$
+                \item<4-> \textit{shared costs} $c(N)$
             \end{enumerate}
 	    \end{itemize}
-	    \item Vector $\bx \in \Rn$ is \textbf{individually rational}, if $x_i \geq v(i)$
+	    \item<5-> Vector $\bx \in \Rn$ is \textbf{individually rational}, if $x_i \geq v(i)$
 	    \begin{itemize}
-	        \item players prefer $x_i$ over $v(i)$
+	        \item<6-> players prefer $x_i$ over $v(i)$
 	    \end{itemize}
 	    \end{itemize}
 	    \vspace{0.2in}
 	    \begin{itemize}
-	    \item $\I^*(v) = \left\{x \in \Rn \mid x(N) = v(N) \right\}$ ... \textbf{preimputation}
+	    \item<7-> $\I^*(v) = \left\{x \in \Rn \mid x(N) = v(N) \right\}$ ... \textbf{preimputation}
 	    \begin{itemize}
-	        \item $x(S)\coloneqq \sum_{i \in S} x_i$
+	        \item<7-> $x(S)\coloneqq \sum_{i \in S} x_i$
 	    \end{itemize}
-	    \item $\I(v) = \left\{x \in \I^*(v) \mid \forall i \in N: x_i \geq v(i)\right\}$ ... \textbf{imputation}
+	    \item<8-> $\I(v) = \left\{x \in \I^*(v) \mid \forall i \in N: x_i \geq v(i)\right\}$ ... \textbf{imputation}
 	\end{itemize}
 \end{frame}
 
@@ -302,13 +303,13 @@
 
 \begin{frame}{Solution concepts}
 	\begin{itemize}
-	    \item Set of payoff vectors satisfying further properties are \textbf{solution concepts}
-	    \item Can reflect payoff distribution, which is
+	    \item<2-> Set of payoff vectors satisfying further properties are \textbf{solution concepts}
+	    \item<3-> Can reflect payoff distribution, which is
 	    \begin{itemize}
-	        \item \textit{...fair...}
-	        \item \textit{...non-discriminatory...}
-	        \item \textit{...stable (players will accept it)...} 
-	        \item \textit{...}
+	        \item<4-> \textit{...fair...}
+	        \item<4-> \textit{...non-discriminatory...}
+	        \item<4-> \textit{...stable (players will accept it)...} 
+	        \item<4-> \textit{...}
 	    \end{itemize}
 	\end{itemize}
 \end{frame}
@@ -320,13 +321,13 @@
 \begin{frame}{Solution concepts}
     Formally:
 	\begin{enumerate}
-	    \item sets of payoff vectors 
+	    \item<2-> sets of payoff vectors 
 	    \begin{itemize}
-	        \item $\Sigma(v) = \left\{x \in \Rn \mid \dots\right\}$
+	        \item<3-> $\Sigma(v) = \left\{x \in \Rn \mid \dots\right\}$
 	    \end{itemize}
-	    \item functions on games
+	    \item<4-> functions on games
 	    \begin{itemize}
-	        \item $\Sigma \colon \Gamma^n \to 2^{\Rn}$
+	        \item<5-> $\Sigma \colon \Gamma^n \to 2^{\Rn}$
 	    \end{itemize}
 	\end{enumerate}
 \end{frame}
@@ -349,15 +350,15 @@
 	\end{enumerate}
 	We distringush
 	\begin{enumerate}
-	    \item \textbf{single-point} solution concepts
+	    \item<2-> \textbf{single-point} solution concepts
 	    \begin{itemize}
-	        \item as a set: $\Sigma(v) = \{x\}$ 
+	        \item<3-> as a set: $\Sigma(v) = \{x\}$ 
 	        \begin{itemize}
-	            \item we prefer: $\Sigma(v) = x$
+	            \item<3-> we prefer: $\Sigma(v) = x$
 	        \end{itemize}
-	        \item as a function: $\Sigma \colon \Gamma^n \to \mathbb{R}$
+	        \item<4-> as a function: $\Sigma \colon \Gamma^n \to \mathbb{R}$
 	    \end{itemize}
-	    \item \textbf{multi-point} solution concepts
+	    \item<2-> \textbf{multi-point} solution concepts
 	\end{enumerate}
 \end{frame}
 
@@ -367,23 +368,25 @@
 
 \begin{frame}{Multi-point solution concept: The core}
     Idea: \textit{Payoff distribution leads to cooperation...}
+	\pause
     \begin{block}{The core}
-    For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
-    \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.\]
+		\pause
+    	For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
+    	\[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.\]
     \end{block}
     \begin{itemize}
-        \item assumption: \textit{homo economicus} 
+        \item<4-> assumption: \textit{homo economicus} 
         \begin{itemize}
-            \item model of human as a player
-            \item strictly rational and selfish
-            \item follows his subjective goals
+            \item<5-> model of human as a player
+            \item<5-> strictly rational and selfish
+            \item<5-> follows his subjective goals
         \end{itemize}
-        \item $v(N)$ ... value, which is distributed among players
-            \item $x(S) > v(S) \implies$ coalition $S$ does not leave $N$ 
-            \begin{itemize}
-                \item would lead to $(S,v_S)$
-                \item $v(S)$ ... distributed value
-            \end{itemize}
+        \item<6-> $v(N)$ ... value, which is distributed among players
+        \item<7-> $x(S) > v(S) \implies$ coalition $S$ does not leave $N$ 
+        \begin{itemize}
+            \item<8-> would lead to $(S,v_S)$
+            \item<8-> $v(S)$ ... distributed value
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -396,8 +399,10 @@
     For a cooperative game $(N,v)$, the \textbf{core} $\mathcal{C}(v)$ is
     \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid \textcolor{blue}{x(S)} \geq \textcolor{red}{v(S)}, \forall S \subseteq N \right\}.\]
     \end{block}
+	\pause
     Reminder
     \begin{block}{Nash equilibrium}
+		\pause
 		Strategy profile $(s_1,\dots,s_n)$ is \textbf{Nash equilibrium}, if it holds for every player $i$,
 		\[
 			v_i(s_1,\dots,s_{i-1},\textcolor{blue}{s_i},s_{i+1},\dots,s_n) \geq v_i(s_1,\dots,s_{i-1},\textcolor{red}{t_i},s_{i+1},\dots,s_n)
@@ -416,18 +421,19 @@
     \[\mathcal{C}(v) = \left\{x \in \I^*(v) \mid x(S) \geq v(S), \forall S \subseteq N \right\}.\]
     \end{block}
     \begin{block}{Emptyness of the core}
+		\pause
         There are cooperative games $\left(N,v\right)$ with empty core.
     \end{block}
     \begin{itemize}
-        \item Non-esential games
+        \item<3-> Non-esential games
         \begin{itemize}
-            \item $v\left(N\right) < \sum_{i \in N}v\left(i\right)$
+            \item<4-> $v\left(N\right) < \sum_{i \in N}v\left(i\right)$
         \end{itemize}
-        \item Let $x \in \mathcal{C}\left(v\right)$
+        \item<5-> Let $x \in \mathcal{C}\left(v\right)$
         \begin{itemize}
-            \item $x\left(N\right)=v\left(N\right)<\sum_{i\in N}\leq x\left(N\right)$ 
+            \item<6-> $x\left(N\right)=v\left(N\right)<\sum_{i\in N}\leq x\left(N\right)$ 
         \end{itemize}
-        \item $x$ does not exist $\implies$ $C\left(v\right)=\emptyset$
+        \item<7-> $x$ does not exist $\implies$ $C\left(v\right)=\emptyset$
     \end{itemize}
 \end{frame}
 
@@ -436,7 +442,27 @@
 %------------------------------------------------
 
 \begin{frame}{Multi-point solution concept: The core}
-    Question: \textit{When is the core non-empty?} \\
+    Question: \textit{When is the core non-empty?} \\ \pause
+	We can encode the core as linear program (P) and determine the dual program (D)
+    \begin{itemize}
+		\item<3-> $\left(P\right)=\begin{cases}
+			min_{x \in \R^n} & x \left(N\right) \\
+			\text{subject to} &x\left(S\right) \geq v\left(S\right)\text{ for }S \subseteq N
+		\end{cases}$
+		\item<4-> $\left(D\right)=\begin{cases}
+			max_{y \in \R_{+}^{\left(2^n-1\right)}} & \sum_{S \subseteq N y_S v\left(S\right)} \\
+			\text{subject to} & \sum_{\emptyset \neq S \subseteq N} y_S \mathcal{X}_S = \mathcal{X}_N
+		\end{cases}$
+	\end{itemize}
+	\vspace{1.4in}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Multi-point solution concept: The core}
+    Question: \textit{When is the core non-empty?} \\ 
 	We can encode the core as linear program (P) and determine the dual program (D)
     \begin{itemize}
 		\item $\left(P\right)=\begin{cases}
@@ -463,24 +489,26 @@
 
 \begin{frame}{Single-point solution concept: The Shapley value}
     Idea: \textit{Divide the profit in a fair way...}
+	\pause
     \begin{block}{The Shapley value}
+		\pause
         For a cooperative game $(N,v)$, the \textbf{Shapley value} $\phi(v)$ of player $i$ is
         \[
         \phi_i(v) = \sum_{S \subseteq N \setminus i}\frac{s!(n-s-1)!}{n!}\left(v(S \cup i) - v(S)\right)
         \]
     \end{block}
     \begin{itemize}
-        \item $v(S\cup i)-v(S)$
+        \item<4-> $v(S\cup i)-v(S)$
         \begin{itemize}
-            \item \textit{marginal contribution} (of player $i$ in $S \cup i$)
+            \item<5-> \textit{marginal contribution} (of player $i$ in $S \cup i$)
         \end{itemize}
-        \item $\frac{s!(n-s-1)!}{n!}$ 
+        \item<6-> $\frac{s!(n-s-1)!}{n!}$ 
         \begin{itemize}
-            \item weights reflecting different sizes of coalitions
+            \item<7-> weights reflecting different sizes of coalitions
         \end{itemize}
-        \item $\sum_{S \subseteq N \setminus i}$
+        \item<8-> $\sum_{S \subseteq N \setminus i}$
         \begin{itemize}
-            \item sum of all marginal contributions of $i$
+            \item<9-> sum of all marginal contributions of $i$
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -498,15 +526,15 @@
         \]
     \end{block}
     \begin{itemize}
-        \item The players agree om the following procedure:
+        \item<2-> The players agree om the following procedure:
         \begin{enumerate}
-			\item Form the grandcoalition N.
-			\item Enter the the coalition individuallyand randomly.
-			\item When player $i$ enters coalition $S$, he receives $v\left(S \cup i\right)-v\left(S\right)$.
+			\item<3-> Form the grandcoalition N.
+			\item<4-> Enter the the coalition individually and randomly.
+			\item<5-> When player $i$ enters coalition $S$, he receives $v\left(S \cup i\right)-v\left(S\right)$.
 		\end{enumerate}
-		\item $s!\left(n-s-1\right)!$ ... number of situations, in which $i$ enters $S$
-		\item $n!$ ... number of all possible ways to construct $N$
-		\item $\phi_i(v)$ ... the average value of player $i$'s payment
+		\item<6-> $s!\left(n-s-1\right)!$ ... number of situations, in which $i$ enters $S$
+		\item<7-> $n!$ ... number of all possible ways to construct $N$
+		\item<8-> $\phi_i(v)$ ... the average value of player $i$'s payment
     \end{itemize}
 \end{frame}
 
@@ -516,24 +544,25 @@
 
 \begin{frame}{Shapley value}
     \textit{It is possible to define it using its properties...}
+	\pause
     \begin{block}{The Shapley value}
        The \textbf{Shapley value} $\phi(v)$ is the only function $f \colon \Gamma^n \to \mathbb{R}$ satisfying for all games $(N,v),(N,w)$:
         \begin{enumerate}
-            \item (AXIOM OF EFFICIENCE)
+            \item<3-> (AXIOM OF EFFICIENCE)
             \begin{itemize}
-                \item $\sum_{i \in N}f_i(v) = v(N)$
+                \item<4-> $\sum_{i \in N}f_i(v) = v(N)$
             \end{itemize}
-            \item (AXIOM OF SYMMETRY)
+            \item<3-> (AXIOM OF SYMMETRY)
             \begin{itemize}
-                \item $\forall i,j \in N$ $(\forall S \subseteq N \setminus \{i,j\}: v(S \cup i) = v(S \cup j)) \implies f_i(v) = f_j(v)$
+                \item<5-> $\forall i,j \in N$ $(\forall S \subseteq N \setminus \{i,j\}: v(S \cup i) = v(S \cup j)) \implies f_i(v) = f_j(v)$
             \end{itemize}
-            \item (AXIOM OF NULL PLAYER)
+            \item<3-> (AXIOM OF NULL PLAYER)
             \begin{itemize}
-                \item $\forall i \in N$ $(\forall S \subseteq N: v(S) = v(S \cup i)) \implies f_i(v)=0$
+                \item<6-> $\forall i \in N$ $(\forall S \subseteq N: v(S) = v(S \cup i)) \implies f_i(v)=0$
             \end{itemize}
-            \item (AXIOM OF ADDITIVITY)
+            \item<3-> (AXIOM OF ADDITIVITY)
             \begin{itemize}
-                \item $v,w \in \Gamma^n: f(v+w)=f(v)+f(w)$
+                \item<7-> $v,w \in \Gamma^n: f(v+w)=f(v)+f(w)$
             \end{itemize}
         \end{enumerate}
         
@@ -546,28 +575,28 @@
 
 \begin{frame}{Weber set}
     \begin{enumerate}
-		\item We fix one construction of $N$
+		\item<2-> We fix one construction of $N$
 		\begin{itemize}
-			\item $\sigma \in \Sigma_n$ ... represent it by permutation
-			\item $\sigma(i)$ ... the order, in which player i enters the coalition
+			\item<3-> $\sigma \in \Sigma_n$ ... represent it by permutation
+			\item<3-> $\sigma(i)$ ... the order, in which player i enters the coalition
 		\end{itemize}
-		\item We compute player's payments
+		\item<4-> We compute player's payments
 		\begin{itemize}
-			\item $m^\sigma_v$ ... \textbf{marginal vector}
-			\item $\left(m^\sigma_v\right)_i=v\left(S_{\sigma(i)}\cup i\right)-v\left(S_{\sigma(i)}\right)$
+			\item<5-> $m^\sigma_v$ ... \textbf{marginal vector}
+			\item<5-> $\left(m^\sigma_v\right)_i=v\left(S_{\sigma(i)}\cup i\right)-v\left(S_{\sigma(i)}\right)$
 			\begin{itemize}
-				\item $S_{\sigma(i)}= \left\{j \in N \mid \sigma(j) < \sigma(i)\right\}$ ... predecessors of $i$ under $\sigma$
+				\item<5-> $S_{\sigma(i)}= \left\{j \in N \mid \sigma(j) < \sigma(i)\right\}$ ... predecessors of $i$ under $\sigma$
 			\end{itemize}
 		\end{itemize}
-		\item We consider all combinations
+		\item<6-> We consider all combinations
 		\begin{itemize}
-			\item $\mathcal{W}(v)=conv\left\{m^{\sigma}_{v}\mid \sigma \in \Sigma_n\right\}$ ... \textbf{Webber set}
+			\item<7-> $\mathcal{W}(v)=conv\left\{m^{\sigma}_{v}\mid \sigma \in \Sigma_n\right\}$ ... \textbf{Webber set}
 		\end{itemize}
 	\end{enumerate}
 	\begin{itemize}
-		\item It holds: $\phi(v)=\sum_{\sigma \in \Sigma_n} \frac{m^\sigma_v}{n!}$
+		\item<8-> It holds: $\phi(v)=\sum_{\sigma \in \Sigma_n} \frac{m^\sigma_v}{n!}$
 	\end{itemize}
-	\begin{block}{Relation between the Shapley value and the Webber set}
+	\begin{block}{Relation between the Shapley value and the Webber set}<9->
 		For a cooperative game $(N,v)$ it holds:
 		\[\phi(v) \in \mathcal{W}(v)\]
 		Moreover, $\phi(v)$ is the center of gravity of $\mathcal{W}(v)$.
@@ -594,11 +623,11 @@
 
 \begin{frame}{Classes of games}
     \begin{itemize}
-		\item \textbf{monotonic game} \[\left(S \subseteq T \subseteq N\right)\left(v(S) \leq v(T)\right)\]
-		\item \textbf{superadditive game} \[\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)\]
-		\item \textbf{convex game} \[\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)\]
-		\item \textbf{essential game} \[v(N) \geq \sum_{i \in N} v(i)\]
-		\item \textbf{balanced game} \[\mathcal{C}(v) \neq \emptyset\]
+		\item<2-> \textbf{monotonic game} \[\left(S \subseteq T \subseteq N\right)\left(v(S) \leq v(T)\right)\]
+		\item<3-> \textbf{superadditive game} \[\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)\]
+		\item<4-> \textbf{convex game} \[\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)\]
+		\item<5-> \textbf{essential game} \[v(N) \geq \sum_{i \in N} v(i)\]
+		\item<6-> \textbf{balanced game} \[\mathcal{C}(v) \neq \emptyset\]
 	\end{itemize}
 \end{frame}
 
@@ -608,17 +637,18 @@
 
 \begin{frame}{Classes of games}
     Question: \textit{What are the relations between them?}
+	\pause
 	\begin{block}{Balanced and essential}
 		Balanced cooperative games are essential.
 	\end{block}
 	\begin{itemize}
-		\item $(N,v)$ is essential
+		\item<3-> $(N,v)$ is essential
 		\begin{itemize}
-			\item $\mathcal{I}(v)=\left\{x \in \R^n \mid x(N)=v(N)\land \forall i \in N: x_i \geq v(i)\right\} \neq \emptyset$
+			\item<4-> $\mathcal{I}(v)=\left\{x \in \R^n \mid x(N)=v(N)\land \forall i \in N: x_i \geq v(i)\right\} \neq \emptyset$
 		\end{itemize}
-		\item $(N,v)$ is balanced
+		\item<5-> $(N,v)$ is balanced
 		\begin{itemize}
-			\item $\emptyset \neq \mathcal{C}(v) \subseteq \mathcal{I}(v)$
+			\item<6-> $\emptyset \neq \mathcal{C}(v) \subseteq \mathcal{I}(v)$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -633,18 +663,18 @@
 		Convex cooperative games are superadditive.
 	\end{block}
 	\begin{itemize}
-		\item $(N,v)$ is convex
+		\item<2-> $(N,v)$ is convex
 		\begin{itemize}
-			\item $\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)$
+			\item<2-> $\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)$
 		\end{itemize}
-		\item $(N,v)$ is superadditive
+		\item<3-> $(N,v)$ is superadditive
 		\begin{itemize}
-			\item $\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)$
+			\item<3-> $\left(S,T \subseteq N, S \cap T = \emptyset\right)\left(v(S)+v(T) \leq v\left(S \cup T\right)\right)$
 		\end{itemize}
-		\item $S \cap T = \emptyset$
+		\item<4-> $S \cap T = \emptyset$
 		\begin{itemize}
-			\item $\left(S \cap T\right) = 0$
-			\item $v(S)+v(T) \leq v\left(S \cup T\right)$
+			\item<4-> $\left(S \cap T\right) = 0$
+			\item<4-> $v(S)+v(T) \leq v\left(S \cup T\right)$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -665,24 +695,27 @@
     \begin{block}{Convex games}
 		$\left(S,T \subseteq N\right)\left(v(S)+v(T) \leq v\left(S \cap T\right)+v\left(S \cup T\right)\right)$
 	\end{block}
+	\pause
 	\begin{block}{Core of convex games}
+		\pause
 		For a convex cooperative game $(N,v)$, it holds $\mathcal{C}(v)=\mathcal{W}(v)$
 	\end{block}
+	\pause
 	Proof: We show only $m^{id}_v \in \mathcal{C}(v)$
 	\begin{enumerate}
-		\item $m^{id}_v(N)=\sum_{i \in N} v \left(\left\{1,\dots,i\right\}\right)-v \left(\left\{1,\dots,i-1\right\}\right)=V(N)$
-		\item $m^{id}_v(S) \geq v(S)$
+		\item<5-> $m^{id}_v(N)=\sum_{i \in N} v \left(\left\{1,\dots,i\right\}\right)-v \left(\left\{1,\dots,i-1\right\}\right)=V(N)$
+		\item<6-> $m^{id}_v(S) \geq v(S)$
 		\begin{itemize}
-			\item $S=\left\{s_1,s_2,\dots,s_k\right\}$
+			\item<7-> $S=\left\{s_1,s_2,\dots,s_k\right\}$
 			\begin{itemize}
-				\item $s_1<s_2<\dots<s_k$
+				\item<7-> $s_1<s_2<\dots<s_k$
 			\end{itemize}
-			\item $v (\left\{1,...,s_i\right\})-v (\left\{1,...,s_{i-1}\right\}) \geq v (\left\{s_1,...,s_i\right\})-v (\left\{s_1,...,s_{i-1}\right\})$
+			\item<8-> $\textcolor{green}{v (\left\{1,...,s_i\right\})}-\textcolor{blue}{v (\left\{1,...,s_{i-1}\right\})} \geq \textcolor{red}{v (\left\{s_1,...,s_i\right\})}-\textcolor{orange}{v (\left\{s_1,...,s_{i-1}\right\})}$
 			\begin{itemize}
-				\item $\left\{s_1,s_2,\dots,s_l\right\} \subseteq \left\{1,\dots,s_l\right\}$ for $l \leq k$
+				\item<8-> $\left\{s_1,s_2,\dots,s_l\right\} \subseteq \left\{1,\dots,s_l\right\}$ for $l \leq k$
 			\end{itemize}
-			\item $m^{id}_v(S)=\sum_{s_i \in S} v \left(\left\{1,\dots,s_i\right\}\right) - v \left(\left\{1,\dots,s_{i-1}\right\}\right)$
-			\item $m^{id}_v \geq \sum_{s_i \in S} v \left(\left\{s_1,\dots,s_i\right\}\right)-v \left(\left\{s_1,\dots,s_{i-1}\right\}\right)=v(S)$
+			\item<9-> $m^{id}_v(S)=\sum_{s_i \in S} \textcolor{green}{v \left(\left\{1,\dots,s_i\right\}\right)} - \textcolor{blue}{v \left(\left\{1,\dots,s_{i-1}\right\}\right)}$
+			\item<10-> $m^{id}_v \geq \sum_{s_i \in S} \textcolor{red}{v \left(\left\{s_1,\dots,s_i\right\}\right)}-\textcolor{orange}{v \left(\left\{s_1,\dots,s_{i-1}\right\}\right)}=v(S)$
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
@@ -697,6 +730,7 @@
 	\end{block}
 	Consequence:
 	\begin{block}{The Shapley value and  convex games}
+		\pause
 		For a convex cooperative game $(N,v)$, it holds:
 		\begin{enumerate}
 			\item $\phi(v) \in \mathcal{C}(v)$
@@ -716,18 +750,18 @@
         A \textbf{cooperative game} is an ordered pair $(N,v)$, where $N$ is a set of players and $v\colon 2^N \to \mathbb{R}$ is the characteristic function. Further, $v(\emptyset) = 0$.
     \end{block}
 	\begin{enumerate}
-		\item \textbf{we might not be interested in forming} $N$
+		\item<2-> \textbf{we might not be interested in forming} $N$
 		\begin{itemize}
-			\item we want to analyze coalition formation
+			\item<3-> we want to analyze coalition formation
 		\end{itemize}
-		\item \textbf{not every coalition makes sense}
+		\item<4-> \textbf{not every coalition makes sense}
 		\begin{itemize}
-			\item two players from completely different fields (why would they want to cooperate)
+			\item<5-> two players from completely different fields (why would they want to cooperate)
 		\end{itemize}
-		\item $2^n$ \textbf{real values representing} $v$
+		\item<6-> $2^n$ \textbf{real values representing} $v$
 		\begin{itemize}
-			\item expensive to get all information
-			\item expensive to store all information
+			\item<7-> expensive to get all information
+			\item<7-> expensive to store all information
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
@@ -743,18 +777,18 @@
 	\begin{enumerate}
 		\item \textbf{we might not be interested in forming} $N$
 		\begin{itemize}
-			\item games with coalition structure
+			\item<2-> games with coalition structure
 		\end{itemize}
 		\item \textbf{not every coalition makes sense}
 		\begin{itemize}
-			\item games on graphs (Martin Černý)
+			\item<3-> games on graphs (Martin Černý)
 		\end{itemize}
 		\item $2^n$ \textbf{real values representing} $v$
 		\begin{itemize}
-			\item incomplete games (David Sychrovský + Filip Úradník)
-			\item interval games (Martin Kunst)
-			\item stochastic games (David Ryzák)
-			\item models with compact characteristic function (Martin Černý)
+			\item<4-> incomplete games (David Sychrovský + Filip Úradník)
+			\item<4-> interval games (Martin Kunst)
+			\item<4-> stochastic games (David Ryzák)
+			\item<4-> models with compact characteristic function (Martin Černý)
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
